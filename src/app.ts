@@ -9,11 +9,15 @@ import AppError from './errors/AppError';
 
 import createConnection from './database';
 
+import transactions from './routes/transactions.routes'
+
 createConnection();
 const app = express();
 
 app.use(express.json());
 app.use(routes);
+
+app.use('/transactions', transactions)
 
 app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
   if (err instanceof AppError) {
