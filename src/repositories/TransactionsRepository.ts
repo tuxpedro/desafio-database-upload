@@ -13,7 +13,7 @@ interface Balance {
 class TransactionsRepository extends Repository<Transaction> {
 
   public async all(): Promise<Transaction[]> {
-    return await this.find({ relations: ['category_id'] })
+    return await this.find()
   }
 
   public async getBalance(): Promise<Balance> {
